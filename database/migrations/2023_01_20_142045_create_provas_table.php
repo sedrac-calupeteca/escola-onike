@@ -18,10 +18,10 @@ return new class extends Migration
             $table->uuid('id')->primary()->default(DB::raw('uuid()'));
             $table->foreignUuid('professor_turma_id')->constrained('professor_turma');
             $table->enum('simestre',['1','2','3'])->default('1');
-            $table->enum('tipo',['EPOCA_1','EPOCA_2','EXAME','RECURSO'])->default('EPOCA_1');
+            $table->enum('tipo',['EPOCA_1','EPOCA_2','EPOCA_3','EXAME','RECURSO'])->default('EPOCA_1');
             $table->boolean('is_terminado')->default(false);
             $table->uuid('created_by');
-            $table->uuid('updated_by');            
+            $table->uuid('updated_by');
             $table->timestamps();
         });
     }

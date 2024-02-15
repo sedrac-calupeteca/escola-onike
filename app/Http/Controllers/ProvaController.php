@@ -26,10 +26,14 @@ class ProvaController extends Controller
         foreach(tipoProvas() as $key => $value)
             if(str_contains(strtolower($value), strtolower($text))) return $key;
         return 0;
-    }    
+    }
 
     public function index(Request $request)
     {
+        $user = userPerfilAuth();
+        if(isset($user->professors->id))
+            return redirect()->route('notas.index');
+
         $provas = Prova::with('professor_turma')->orderBy('provas.created_at','DESC')
                     ->select('provas.*');
         $anolectivos = AnoLectivo::orderBy('data_inicio', 'DESC')->limit(50)->get();
@@ -101,14 +105,14 @@ class ProvaController extends Controller
             $data = $request->all();
             $data['updated_by'] = Auth::user()->id;
             $data['updated_at'] = Carbon::now();
-            $prova = Prova::find($id); 
+            $prova = Prova::find($id);
             $prova->update($data);
             toastr()->success("Operação de actualização foi realizada com sucesso", "Successo");
         } catch (Exception) {
             toastr()->error("Operação de actualização não foi possível a sua realização", "Erro");
         }
         return redirect()->back();
-    }    
+    }
 
     public function destroy($id){
         try{
@@ -118,8 +122,8 @@ class ProvaController extends Controller
         }catch(Exception){
             toastr()->error("Operação de eliminação não foi possível a sua realização","Erro");
         }
-        return redirect()->back(); 
-    }     
+        return redirect()->back();
+    }
 
     public function list(Request $request)
     {

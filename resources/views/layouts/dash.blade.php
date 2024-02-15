@@ -4,7 +4,7 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
-            <a href="index.html" class="logo d-flex align-items-center">
+            <a href="{{ asset('img/logo.png') }}" class="logo d-flex align-items-center">
                 <img src="{{ asset('img/logo.png') }}" alt="">
                 <span class="d-none d-lg-block">EscolaOnilka</span>
             </a>
@@ -43,7 +43,8 @@
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="{{ $auth->image ? url('storage/'.$auth->image) : asset('img/profile-img.jpg') }}" alt="Profile" class="rounded-circle">
+                        <img src="{{ $auth->image ? url('storage/' . $auth->image) : asset('img/profile-img.jpg') }}"
+                            alt="Profile" class="rounded-circle">
                         <span class="d-none d-md-block dropdown-toggle ps-2">{{ abreviarNome($auth) }}</span>
                     </a><!-- End Profile Iamge Icon -->
 
@@ -102,7 +103,7 @@
                     <span>Perfil</span>
                 </a>
             </li>
-            @if (ruleNav('usuario'))
+            @if (permitDirectorGeralSecretario())
                 <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#forms-user" data-bs-toggle="collapse" href="#">
                         <i class="bi bi-people"></i>
@@ -140,77 +141,81 @@
                             <i class="bi bi-circle"></i><span>Notas</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ route('pauta.index') }}">
-                            <i class="bi bi-circle"></i><span>Pauta</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('calendarios.list') }}">
-                            <i class="bi bi-circle"></i><span>Calendário de prova</span>
-                        </a>
-                    </li>
+                    @if (permitDirectorGeralSecretario())
+                        <li>
+                            <a href="{{ route('calendarios.list') }}">
+                                <i class="bi bi-circle"></i><span>Calendário de prova</span>
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </li>
-            <li class="nav-heading">Panel</li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed @if ($page == 'ano-lectivo') active @endif"
-                    href="{{ route('ano-lectivos.index') }}">
-                    <i class="bi bi-calendar-plus"></i>
-                    <span>Ano lectivo</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed @if ($page == 'prova') active @endif"
-                    href="{{ route('provas.index') }}">
-                    <i class="bi bi-tags"></i>
-                    <span>Prova</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed @if ($page == 'calendario') active @endif"
-                    href="{{ route('calendarios.index') }}">
-                    <i class="bi bi-calendar"></i>
-                    <span>Calendário</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed @if ($page == 'reuniao') active @endif"
-                    href="{{ route('reunioes.index') }}">
-                    <i class="bi bi-person-lines-fill"></i>
-                    <span>Reunião</span>
-                </a>
-            </li>
-
-
-            <li class="nav-item">
-                <a class="nav-link collapsed @if ($page == 'curso-classe') active @endif"
-                    href="{{ route('cursos.index') }}">
-                    <i class="bi bi-easel"></i>
-                    <span>Cursos e Classes</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed @if ($page == 'disciplina') active @endif"
-                    href="{{ route('disciplinas.index') }}">
-                    <i class="bi bi-book"></i>
-                    <span>Disciplinas</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed @if ($page == 'turma') active @endif"
-                    href="{{ route('turmas.index') }}">
-                    <i class="bi bi-archive"></i>
-                    <span>Turmas</span>
-                </a>
-            </li>
-
+            @if (permitDirectorGeralSecretario() || permitProfessor())
+                <li class="nav-heading">Panel</li>
+            @endif
+            @if (permitDirectorGeralSecretario())
+                <li class="nav-item">
+                    <a class="nav-link collapsed @if ($page == 'ano-lectivo') active @endif"
+                        href="{{ route('ano-lectivos.index') }}">
+                        <i class="bi bi-calendar-plus"></i>
+                        <span>Ano lectivo</span>
+                    </a>
+                </li>
+            @endif
+            @if (permitDirectorGeralSecretario() || permitProfessor())
+                <li class="nav-item">
+                    <a class="nav-link collapsed @if ($page == 'prova') active @endif"
+                        href="{{ route('provas.index') }}">
+                        <i class="bi bi-tags"></i>
+                        <span>Prova</span>
+                    </a>
+                </li>
+            @endif
+            @if (permitDirectorGeralSecretario())
+                <li class="nav-item">
+                    <a class="nav-link collapsed @if ($page == 'calendario') active @endif"
+                        href="{{ route('calendarios.index') }}">
+                        <i class="bi bi-calendar"></i>
+                        <span>Calendário</span>
+                    </a>
+                </li>
+            @endif
+            @if (permitDirectorGeralSecretario())
+                <li class="nav-item">
+                    <a class="nav-link collapsed @if ($page == 'reuniao') active @endif"
+                        href="{{ route('reunioes.index') }}">
+                        <i class="bi bi-person-lines-fill"></i>
+                        <span>Reunião</span>
+                    </a>
+                </li>
+            @endif
+            @if (permitDirectorGeralSecretario())
+                <li class="nav-item">
+                    <a class="nav-link collapsed @if ($page == 'curso-classe') active @endif"
+                        href="{{ route('cursos.index') }}">
+                        <i class="bi bi-easel"></i>
+                        <span>Cursos e Classes</span>
+                    </a>
+                </li>
+            @endif
+            @if (permitDirectorGeralSecretario())
+                <li class="nav-item">
+                    <a class="nav-link collapsed @if ($page == 'disciplina') active @endif"
+                        href="{{ route('disciplinas.index') }}">
+                        <i class="bi bi-book"></i>
+                        <span>Disciplinas</span>
+                    </a>
+                </li>
+            @endif
+            @if (permitDirectorGeralSecretario())
+                <li class="nav-item">
+                    <a class="nav-link collapsed @if ($page == 'turma') active @endif"
+                        href="{{ route('turmas.index') }}">
+                        <i class="bi bi-archive"></i>
+                        <span>Turmas</span>
+                    </a>
+                </li>
+            @endif
         </ul>
 
     </aside>

@@ -87,6 +87,14 @@
         </label>
         <input type="number" class="form-control" name="sala" id="sala" min="0" max="100" />
     </div>
+    <div class="col-md-6">
+        <label for="chave" class="form-label" class="form-control">
+            <i class="bi bi-123"></i>
+            <span>Código:</span>
+            <span class="text-danger">*</span>
+        </label>
+        <input type="text" class="form-control" name="chave" id="chave"/>
+    </div>
 </div>
 <button class="btn btn-outline-primary rounded-pill mt-3">
     <i class="bi bi-check-circle"></i>

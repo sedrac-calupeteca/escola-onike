@@ -42,7 +42,7 @@
     <div class="col-md-6">
         <label for="simestre" class="form-label">
             <i class="bi bi-calendar-event"></i>
-            <span>Simeste:</span>
+            <span>Trimestre:</span>
             <span class="text-danger">*</span>
         </label>
         @php $simestres = simestres(); @endphp
@@ -58,11 +58,11 @@
             <span>Tipo de prova:</span>
             <span class="text-danger">*</span>
         </label>
-        @php $tipos = tipoProvas(); @endphp        
+        @php $tipos = tipoProvas(); @endphp
         <select type="number" class="form-control" name="tipo" id="tipo">
             @foreach ($tipos as $key => $value)
                 <option value="{{$key}}">{{ $value }}</option>
-            @endforeach            
+            @endforeach
         </select>
     </div>
 </div>

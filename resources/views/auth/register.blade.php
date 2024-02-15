@@ -21,7 +21,9 @@
                                     <form class="row g-3 needs-validation" action="{{ route('register') }}" method="POST">
                                         @csrf
                                         @include('components.erros')
-                                        @include('components.form.user')
+                                        @include('components.form.user',[
+                                            'hidden_btn' => true
+                                        ])
                                         <div class="col-12">
                                             <button class="btn btn-primary w-100 mt-2" type="submit">Cadastrar</button>
                                         </div>

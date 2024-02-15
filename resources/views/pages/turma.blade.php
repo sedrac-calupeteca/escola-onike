@@ -93,13 +93,14 @@
         function text(...arg) {
             selectDefault(arg[0], 'periodo');
             document.querySelector('#sala').value = arg[1];
-            document.querySelector('#span-turma').innerHTML = arg[2];
+            document.querySelector('#chave').value = arg[2];
+            document.querySelector('#span-turma').innerHTML = arg[3];
         }
 
         span.addEventListener('click', function(e) {
             form.action = span.dataset.url;
             if (!span.classList.contains('d-none')) span.classList.add('d-none');
-            text("", "", "Cadastra");
+            text("", "","", "Cadastra");
             method.value = "POST";
             panelAnolectivo.innerHTML = panelCurso.innerHTML = '';
         });
@@ -110,7 +111,7 @@
                 let tds = row.querySelectorAll('td');
                 form.action = item.dataset.up;
                 if (span.classList.contains('d-none')) span.classList.remove('d-none');
-                text(tds[2].innerHTML, tds[3].innerHTML, "Actualizar");
+                text(tds[2].innerHTML, tds[3].innerHTML, tds[6].innerHTML, "Actualizar");
                 panelAnolectivo.innerHTML = createAnolectivoTable(`<tr>
                   <td>
                     <input class='form-check-input' type="radio" name="ano_lectivo_id" value="${tds[0].dataset.ano}" checked/>
@@ -156,12 +157,12 @@
               <table class='table table-borderless  text-center'>
                 <thead>
                    <tr>
-                    <th> <div class="th-icone"> <i class="bi bi-check"></i> <span>#</span> </div> </th>                        
+                    <th> <div class="th-icone"> <i class="bi bi-check"></i> <span>#</span> </div> </th>
                     <th> <div class="th-icone"> <i class="bi bi-file-word"></i> <span>Código</span> </div> </th>
                     <th> <div class="th-icone"> <i class="bi bi-calendar-check"></i> <span>Data inicio</span> </div> </th>
                     <th> <div class="th-icone"> <i class="bi bi-calendar-x"></i> <span>Data fim</span> </div> </th>
                   </tr>
-                </thead>  
+                </thead>
                 <tbody>${html}</tbody>
               </table>`;
             }
@@ -199,7 +200,7 @@
                        <tr>
                         <th>
                           <div class="th-icone"> <i class="bi bi-check"></i> <span>#</span> </div>
-                        </th>                        
+                        </th>
                         <th>
                           <div class="th-icone"> <i class="bi bi-file-word"></i> <span>Nome</span> </div>
                         </th>
@@ -210,7 +211,7 @@
                           <div class="th-icone"><i class="bi bi-mortarboard"></i><span>Nível</span> </div>
                         </th>
                       </tr>
-                    </thead>  
+                    </thead>
                     <tbody>${html}</tbody>
                   </table>`;
             }

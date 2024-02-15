@@ -58,8 +58,8 @@
                                         </div>
                                         <div class="col-12">
                                             <p class="small mb-0 mt-1">
-                                                <span>Não tenho uma conta?</span> 
-                                                <a href="pages-register.html">Criar uma conta</a>
+                                                <span>Não tenho uma conta?</span>
+                                                <a href="{{ route('register') }}">Criar uma conta</a>
                                             </p>
                                         </div>
                                     </form>
@@ -81,5 +81,5 @@
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
         <i class="bi bi-arrow-up-short"></i>
     </a>
-    
+
 @endsection

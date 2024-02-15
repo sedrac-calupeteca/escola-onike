@@ -48,7 +48,7 @@
                     <td>{{ $reuniao->data_fim }}</td>
                     <td @isset($anolectivo->descricao) class="tj" @endisset>{{ $reuniao->descricao ?? '---' }}</td>
                     <td>
-                        <button class="btn btn-outline-primary rounded-pill btn-up" type="button"
+                        <button class="btn btn-outline-primary btn-sm rounded-pill btn-up" type="button"
                             data-bs-toggle="collapse" data-bs-target="#flush-collapseProf" aria-expanded="false"
                             aria-controls="flush-collapseProf" data-up="#" data-reuniao="{{ $reuniao->nome }}"
                             onclick="openProfPanel('{{ $reuniao->nome }}','{{ $reuniao->id }}')">
@@ -59,7 +59,7 @@
                         </button>
                     </td>
                     <td>
-                        <a class="btn btn-outline-success rounded-pill"
+                        <a class="btn btn-outline-success btn-sm rounded-pill"
                             href="{{ route('usuario.index', 'professores') }}?reuniao={{ $reuniao->id }}">
                             <div class="th-icone">
                                 <i class="bi bi-list"></i>
@@ -69,7 +69,7 @@
                         </a>
                     </td>
                     <td>
-                        <button class="btn btn-outline-danger rounded-pill btn-del" data-bs-toggle="modal"
+                        <button class="btn btn-outline-danger btn-sm rounded-pill btn-del" data-bs-toggle="modal"
                             data-bs-target="#modalDelete" data-del="{{ route('reunioes.destroy', $reuniao->id) }}">
                             <div class="th-icone">
                                 <i class="bi bi-trash"></i>
@@ -78,7 +78,7 @@
                         </button>
                     </td>
                     <td>
-                        <button class="btn btn-outline-warning rounded-pill btn-up" type="button"
+                        <button class="btn btn-outline-warning btn-sm rounded-pill btn-up" type="button"
                             data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
                             aria-controls="flush-collapseOne" data-up="{{ route('reunioes.update', $reuniao->id) }}">
                             <div class="th-icone">

@@ -136,7 +136,7 @@
                                     <i class="bi bi-trash text-white"></i>
                                 </a>
                             @else
-                                <a class="bg-success rounded-circle p-2 mt-2"
+                                <a class="bg-success  rounded-circle p-2 mt-2"
                                     href="{{ route('matricula.action', ['create', $usuario->alunos->id]) }}"
                                     title="adicionar matricula">
                                     <i class="bi bi-plus text-white"></i>
@@ -162,7 +162,7 @@
                     @endif
                     @if (!isset($reuniao))
                         <td>
-                            <button class="btn btn-outline-danger rounded-pill btn-del" data-bs-toggle="modal"
+                            <button class="btn btn-outline-danger btn-sm rounded-pill btn-del" data-bs-toggle="modal"
                                 data-bs-target="#modalDelete" data-del="{{ route('usuario.destroy', $userType) }}">
                                 <div class="th-icone">
                                     <i class="bi bi-trash"></i>
@@ -171,7 +171,7 @@
                             </button>
                         </td>
                         <td>
-                            <button class="btn btn-outline-warning rounded-pill btn-up" type="button"
+                            <button class="btn btn-outline-warning btn-sm rounded-pill btn-up" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
                                 aria-controls="flush-collapseOne" data-up="{{ route('usuario.update', $userType) }}">
                                 <div class="th-icone">

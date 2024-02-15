@@ -96,7 +96,7 @@
                         </div>
                     </td>
                     <td>
-                        <a class="btn btn-outline-primary rounded-pill"
+                        <a class="btn btn-outline-primary btn-sm rounded-pill"
                             @if (!$hidden)
                                 href="{{ route('calendario-prova.show', $calendario->id) }}"
                             @else
@@ -111,7 +111,7 @@
                     </td>
                     @if (!$hidden)
                         <td>
-                            <button class="btn btn-outline-danger rounded-pill btn-del" data-bs-toggle="modal"
+                            <button class="btn btn-outline-danger btn-sm rounded-pill btn-del" data-bs-toggle="modal"
                                 data-bs-target="#modalDelete"
                                 data-del="{{ route('calendarios.destroy', $calendario->id) }}">
                                 <div class="th-icone">
@@ -121,7 +121,7 @@
                             </button>
                         </td>
                         <td>
-                            <button class="btn btn-outline-warning rounded-pill btn-up" type="button"
+                            <button class="btn btn-outline-warning btn-sm rounded-pill btn-up" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
                                 aria-controls="flush-collapseOne"
                                 data-up="{{ route('calendarios.update', $calendario->id) }}">

@@ -46,7 +46,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('perfil-user-foto',[FuncionarioController::class,'foto'])->name('user.foto');
     Route::post('perfil-user',[FuncionarioController::class,'perfil'])->name('user.perfil');
-    
+
     Route::get('pauta',[AlunoController::class,'pauta'])->name('pauta.index');
 
 
@@ -88,12 +88,15 @@ Route::middleware(['auth'])->group(function () {
     Route::post('disciplina/{id}/curso',[CursoDisciplinaController::class,'curso_store'])->name('disciplina.curso.store');
     Route::post('curso/{id}/disciplina',[CursoDisciplinaController::class,'disciplina_store'])->name('curso.disciplina.store');
     Route::post('reuniao/convidar/professores',[ProfessorReuniaoController::class,'store'])->name('professor.reuniao');
-    
+
     Route::get('json/provas',[ProvaController::class,'list'])->name('provas.json');
     Route::get('json/cursos',[CursoController::class,'list'])->name('cursos.json');
     Route::get('json/turmas',[TurmaController::class,'list'])->name('turmas.json');
     Route::get('json/disciplinas',[DisciplinaController::class,'list'])->name('disciplina.json');
     Route::get('json/anolectivos',[AnoLectivoController::class,'list'])->name('anolectivos.json');
     Route::get('json/list/professors',[ProfessorController::class,'list_by'])->name('professors.list.json');
+
+
+    Route::get('nota-print/{id}',[NotaController::class,'print'])->name('nota.print');
 
 });

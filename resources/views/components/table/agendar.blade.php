@@ -69,7 +69,7 @@
                     <td>{{ $calendarioProva->hora_fim }}</td>
                     @if (!$hidden)
                         <td>
-                            <button class="btn btn-outline-danger rounded-pill btn-del" data-bs-toggle="modal"
+                            <button class="btn btn-outline-danger btn-sm rounded-pill btn-del" data-bs-toggle="modal"
                                 data-bs-target="#modalDelete"
                                 data-del="{{ route('calendario-prova.destroy', $calendarioProva->id) }}">
                                 <i class="bi bi-trash"></i>
@@ -77,7 +77,7 @@
                             </button>
                         </td>
                         <td>
-                            <button class="btn btn-outline-warning rounded-pill btn-up" type="button"
+                            <button class="btn btn-outline-warning btn-sm rounded-pill btn-up" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
                                 aria-controls="flush-collapseOne"
                                 data-up="{{ route('calendario-prova.update', $calendarioProva->id) }}">

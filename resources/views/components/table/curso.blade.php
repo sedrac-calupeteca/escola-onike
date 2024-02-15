@@ -87,7 +87,7 @@
                     <td data-value={{ $curso->is_fechado }}>{{ cursoEstado($curso) }}</td>
                     <td @isset($curso->descricao) class="tj" @endisset>{{ $curso->descricao ?? '---' }}</td>
                     <td>
-                        <a class="btn btn-outline-info rounded-pill"
+                        <a class="btn btn-outline-info btn-sm rounded-pill"
                             href="{{ route('cursos.turmas', $curso->id) }}">
                             <div class="th-icone">
                                 <i class="bi bi-plus"></i>
@@ -97,7 +97,7 @@
                         </a>
                     </td>
                     <td>
-                        <a class="btn btn-outline-success rounded-pill"
+                        <a class="btn btn-outline-success btn-sm rounded-pill"
                             href="{{ route('curso.disciplina', $curso->id) }}">
                             <div class="th-icone">
                                 <i class="bi bi-list"></i>
@@ -107,16 +107,16 @@
                         </a>
                     </td>
                     <td>
-                        <a class="btn btn-outline-primary rounded-pill"
+                        <a class="btn btn-outline-primary btn-sm rounded-pill"
                             href="{{ route('curso.disciplina.add', $curso->id) }}">
                             <div class="th-icone">
                                 <i class="bi bi-plus"></i>
                                 <span>adicionar</span>
                             </div>
                         </a>
-                    </td>                    
+                    </td>
                     <td>
-                        <button class="btn btn-outline-danger rounded-pill btn-del" data-bs-toggle="modal"
+                        <button class="btn btn-outline-danger btn-sm rounded-pill btn-del" data-bs-toggle="modal"
                             data-bs-target="#modalDelete" data-del="{{ route('cursos.destroy', $curso->id) }}">
                             <div class="th-icone">
                                 <i class="bi bi-trash"></i>
@@ -125,7 +125,7 @@
                         </button>
                     </td>
                     <td>
-                        <button class="btn btn-outline-warning rounded-pill btn-up" type="button"
+                        <button class="btn btn-outline-warning btn-sm rounded-pill btn-up" type="button"
                             data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
                             aria-controls="flush-collapseOne" data-up="{{ route('cursos.update', $curso->id) }}">
                             <div class="th-icone">

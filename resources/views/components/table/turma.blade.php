@@ -29,7 +29,7 @@
                 <th>
                     <div class="th-icone">
                         <i class="bi bi-mortarboard"></i>
-                        <span>Nível</span> 
+                        <span>Nível</span>
                     </div>
                 </th>
                 <th>
@@ -37,7 +37,13 @@
                         <i class="bi bi-collection"></i>
                         <span>Classe</span>
                     </div>
-                  </th>                
+                  </th>
+                  <th>
+                    <div class="th-icone">
+                        <i class="bi bi-123"></i>
+                        <span>Código</span>
+                    </div>
+                  </th>
                 <th>
                     <div class="th-icone">
                         <i class="bi bi-file-earmark-person-fill"></i>
@@ -56,7 +62,7 @@
             @foreach ($turmas as $turma)
                 <tr>
                     <td data-ano={{ $turma->ano_lectivo_id }}
-                        data-inicio={{ $turma->ano_lectivo->data_inicio }} 
+                        data-inicio={{ $turma->ano_lectivo->data_inicio }}
                         data-fim={{ $turma->ano_lectivo->data_fim }}>
                         {{ $turma->ano_lectivo->codigo }}
                     </td>
@@ -65,8 +71,9 @@
                     <td>{{ $turma->sala }}</td>
                     <td>{{ $turma->curso->nivel }}</td>
                     <td>{{ $turma->curso->num_classe }}</td>
+                    <td>{{ $turma->chave }}</td>
                     <td>
-                        <a class="btn btn-outline-success rounded-pill"
+                        <a class="btn btn-outline-success btn-sm rounded-pill"
                             href="{{ route('usuario.index', 'professores') }}?turma={{ $turma->id }}">
                             <i class="bi bi-plus"></i>
                             <span>adicionar</span>
@@ -74,14 +81,14 @@
                         </a>
                     </td>
                     <td>
-                        <button class="btn btn-outline-danger rounded-pill btn-del" data-bs-toggle="modal"
+                        <button class="btn btn-outline-danger btn-sm rounded-pill btn-del" data-bs-toggle="modal"
                             data-bs-target="#modalDelete" data-del="{{ route('turmas.destroy', $turma->id) }}">
                             <i class="bi bi-trash"></i>
                             <span>eliminar</span>
                         </button>
                     </td>
                     <td>
-                        <button class="btn btn-outline-warning rounded-pill btn-up" type="button"
+                        <button class="btn btn-outline-warning btn-sm rounded-pill btn-up" type="button"
                             data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
                             aria-controls="flush-collapseOne" data-up="{{ route('turmas.update', $turma->id) }}">
                             <i class="bi bi-pencil-square"></i>

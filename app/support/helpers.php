@@ -18,7 +18,7 @@ if (! function_exists('funcao')) {
 
 if (! function_exists('funcaoAuth')) {
     function funcaoAuth() : string{
-        
+
         return "Professor";
     }
 }
@@ -38,7 +38,7 @@ if (! function_exists('abreviarNome')) {
         $name = $user->name;
         $array = explode(" ",$name);
         $tam = sizeof($array);
-        
+
         return $array[0][0].'.'.$array[$tam-1];
     }
 }
@@ -87,6 +87,7 @@ if(! function_exists('tipoProvas')){
         return [
             'EPOCA_1' => 'Primeiro época',
             'EPOCA_2' => 'Segundo época',
+            'EPOCA_3' => 'Terceira época',
             'EXAME' => 'Exame',
             'RECURSO' => 'Recurso',
         ];
@@ -171,11 +172,33 @@ if(! function_exists('ruleNav')){
                     return $userPerfil->perfil == "funcionarios" &&  in_array($userPerfil->funcionarios->funcao,$cargosPermit);
                 else
                     return in_array($userPerfil->funcionarios->funcao,$cargosPermit);
-            case "prova":
+            case "secretario":
                 $cargosPermit = ['SECRETARIO'];
                 return in_array($userPerfil->funcionarios->funcao,$cargosPermit);
+                case "professor":
+                    return isset($user->professors->id);
             default:
                 return false;
         }
+    }
+}
+
+
+if(! function_exists('permitDirectorGeralSecretario')){
+    function permitDirectorGeralSecretario(){
+        return ruleNav("usuario");
+    }
+}
+
+
+if(! function_exists('permitSecretario')){
+    function permitSecretario(){
+        return ruleNav("secretario");
+    }
+}
+
+if(! function_exists('permitProfessor')){
+    function permitProfessor(){
+        return ruleNav("professor");
     }
 }

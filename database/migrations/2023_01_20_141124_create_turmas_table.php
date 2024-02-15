@@ -16,6 +16,7 @@ return new class extends Migration
     {
         Schema::create('turmas', function (Blueprint $table) {
             $table->uuid('id')->primary()->default(DB::raw('uuid()'));
+            $table->string('chave')->nullable();
             $table->foreignUuid('curso_id')->constrained('cursos');
             $table->foreignUuid('ano_lectivo_id')->constrained('ano_lectivos');
             $table->enum('periodo',['REGULAR','NOTURNO'])->default('REGULAR');

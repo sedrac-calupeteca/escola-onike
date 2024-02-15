@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignUuid('turma_id')->constrained('turmas');
             $table->foreignUuid('disciplina_id')->constrained('disciplinas');
             $table->uuid('created_by');
-            $table->uuid('updated_by');       
+            $table->uuid('updated_by');
             $table->unique(['professor_id','turma_id']);
             $table->timestamps();
         });
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('turma_professors');
+        Schema::dropIfExists('professor_turma');
     }
 };

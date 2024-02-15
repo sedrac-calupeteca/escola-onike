@@ -29,7 +29,7 @@ class TurmaController extends Controller
                 $turmas = $turmas->join('ano_lectivos','ano_lectivos.id','ano_lectivo_id')
                                  ->where('ano_lectivos.codigo','like','%'.$query.'%');
             }
-        }        
+        }
 
         return view('pages.turma',[
             'auth' => Auth::user(),
@@ -40,12 +40,13 @@ class TurmaController extends Controller
 
     public function store(TurmaRequest $request){
         try{
-            $data = $request->all(); 
+            $data = $request->all();
             $data['created_by'] = $data['updated_by'] = Auth::user()->id;
             $data['created_at'] = $data['updated_at'] = Carbon::now();
             Turma::create($data);
             toastr()->success("Operação de criação foi realizada com sucesso","Successo");
-        }catch(Exception){
+        }catch(Exception $e){
+            dd("error: ".$e->getMessage());
             toastr()->error("Operação de criação não foi possível a sua realização","Erro");
         }
         return redirect()->back();
@@ -67,7 +68,7 @@ class TurmaController extends Controller
                       ->join('disciplinas','disciplinas.id','=','disciplina_id')
                       ->join('users','users.id','=','professors.user_id')
                       ->join('ano_lectivos','ano_lectivos.id','=','turmas.ano_lectivo_id')
-                      ->join('cursos','cursos.id','=','turmas.curso_id')  
+                      ->join('cursos','cursos.id','=','turmas.curso_id')
                       ->where("ano_lectivos.id",$operador, $anolectivo_id)
                       ->where("cursos.nome","like","%".$search."%")
                       ->select(
@@ -86,11 +87,11 @@ class TurmaController extends Controller
         $code = isset($request->code) ? 2 : 1;
         $turmas = $this->query($code, $operador, $anolectivo_id, $request->search);
         return response()->json(["turmas" => $turmas]);
-    }    
+    }
 
     public function update(TurmaRequest $request,$id){
         try{
-            $data = $request->all(); 
+            $data = $request->all();
             $data['updated_by'] = Auth::user()->id;
             $data['updated_at'] = Carbon::now();
             $turma = Turma::find($id);
@@ -100,7 +101,7 @@ class TurmaController extends Controller
             toastr()->error("Operação de actualização não foi possível a sua realização","Erro");
         }
         return redirect()->back();
-    }    
+    }
 
     public function destroy($id){
         try{
@@ -110,7 +111,7 @@ class TurmaController extends Controller
         }catch(Exception){
             toastr()->error("Operação de eliminação não foi possível a sua realização","Erro");
         }
-        return redirect()->back(); 
-    }    
+        return redirect()->back();
+    }
 
 }

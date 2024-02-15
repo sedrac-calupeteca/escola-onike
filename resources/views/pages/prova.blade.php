@@ -21,7 +21,7 @@
         </span>
         <div class="card-body">
             <div class="accordion accordion-flush" id="accordionFlushExample">
-                @if (!isset($aluno_view))
+                @if (!isset($aluno_view) && permitDirectorGeralSecretario())
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingOne">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -75,18 +75,18 @@
         function createTurmaTable(html) {
             return `<table class='table table-borderless  text-center'>
              <thead>
-             <tr>                        
+             <tr>
               <th> <div class="th-icone"> <i class="bi bi-check"></i> <span>#</span> </div> </th>
-              <th> <div class="th-icone">  <i class="bi bi-person"></i> <span>Professor</span> </div> </th>   
-              <th> <div class="th-icone">  <i class="bi bi-book"></i> <span>Disciplina</span> </div> </th>                         
+              <th> <div class="th-icone">  <i class="bi bi-person"></i> <span>Professor</span> </div> </th>
+              <th> <div class="th-icone">  <i class="bi bi-book"></i> <span>Disciplina</span> </div> </th>
               <th> <div class="th-icone">  <i class="bi bi-brightness-high"></i> <span>Periodo</span> </div> </th>
-              <th> <div class="th-icone"> <i class="bi bi-1-circle"></i> <span>Sala</span></div> </th>                                                
+              <th> <div class="th-icone"> <i class="bi bi-1-circle"></i> <span>Sala</span></div> </th>
               <th> <div class="th-icone"> <i class="bi bi-file-word"></i> <span>Curso/Turma</span> </div> </th>
               <th> <div class="th-icone"> <i class="bi bi-collection"></i> <span>Classe</span></div> </th>
               <th> <div class="th-icone"> <i class="bi bi-mortarboard"></i> <span>Nível</span> </div> </th>
-              <th> <div class="th-icone"> <i class="bi bi-calendar-plus"></i> <span>Ano lectivo</span></div> </th>                        
+              <th> <div class="th-icone"> <i class="bi bi-calendar-plus"></i> <span>Ano lectivo</span></div> </th>
             </tr>
-          </thead>  
+          </thead>
           <tbody>${html}</tbody>
         </table>`;
         }
@@ -137,7 +137,7 @@
                               <td>${tds[2].innerHTML}</td>
                               <td>${tds[3].innerHTML}</td>
                               <td>${tds[5].innerHTML}</td>
-                              <td>${tds[4].dataset.sala}</td>                      
+                              <td>${tds[4].dataset.sala}</td>
                               <td>${tds[4].innerHTML}</td>
                               <td>${tds[6].innerHTML}</td>
                               <td>${tds[7].innerHTML}</td>
@@ -170,7 +170,7 @@
                               <td>${item.professor}</td>
                               <td>${item.disciplina}</td>
                               <td>${item.periodo}</td>
-                              <td>${item.sala}</td>                      
+                              <td>${item.sala}</td>
                               <td>${item.nome}</td>
                               <td>${item.num_classe}</td>
                               <td>${item.nivel}</td>

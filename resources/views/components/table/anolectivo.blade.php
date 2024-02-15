@@ -37,7 +37,7 @@
                         <i class="bi bi-archive"></i>
                         <span>Turma</span>
                     </div>
-                </th>                  
+                </th>
                 <th colspan="2">
                     <div class="th-icone">
                         <i class="bi bi-tools"></i>
@@ -63,16 +63,16 @@
                         @endif
                     </td>
                     <td>
-                        <a class="btn btn-outline-success rounded-pill" href="{{route('ano-lectivos.turmas',$anolectivo->id)}}">
+                        <a class="btn btn-outline-success btn-sm rounded-pill" href="{{route('ano-lectivos.turmas',$anolectivo->id)}}">
                             <i class="bi bi-plus"></i>
                             <span>adicionar</span>
                             (<span class="badge badge-primary text-dark">
                                 {{ sizeof($anolectivo->turmas) }}
                             </span>)
                         </a>
-                    </td>                      
+                    </td>
                     <td>
-                        <button class="btn btn-outline-danger rounded-pill btn-del" data-bs-toggle="modal"
+                        <button class="btn btn-outline-danger btn-sm rounded-pill btn-del" data-bs-toggle="modal"
                             data-bs-target="#modalDelete"
                             data-del="{{ route('ano-lectivos.destroy', $anolectivo->id) }}">
                             <i class="bi bi-trash"></i>
@@ -80,7 +80,7 @@
                         </button>
                     </td>
                     <td>
-                        <button class="btn btn-outline-warning rounded-pill btn-up" type="button"
+                        <button class="btn btn-outline-warning btn-sm rounded-pill btn-up" type="button"
                             data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
                             aria-controls="flush-collapseOne"
                             data-up="{{ route('ano-lectivos.update', $anolectivo->id) }}">

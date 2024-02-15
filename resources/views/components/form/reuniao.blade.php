@@ -14,7 +14,7 @@
             <span>Data inicio:</span>
             @if (!isset($require)) <span class="text-danger">*</span> @endif
         </label>
-        <input type="date" id="data_inicio" name="data_inicio" class="form-control"
+        <input type="datetime-local" id="data_inicio" name="data_inicio" class="form-control"
             value="{{ $reuniao->data_inicio ?? old('data_inicio') }}" />
     </div>
     <div class="col-md-4 @isset($inline) inline @endisset">
@@ -23,7 +23,7 @@
             <span>Data fim:</span>
             @if (!isset($require)) <span class="text-danger">*</span> @endif
         </label>
-        <input type="date" id="data_fim" name="data_fim" class="form-control" value="{{ $reuniao->data_fim ?? old('data_fim') }}" />
+        <input type="datetime-local" id="data_fim" name="data_fim" class="form-control" value="{{ $reuniao->data_fim ?? old('data_fim') }}" />
     </div>
 </div>
 <div class="mt-1 @isset($inline) inline @endisset">

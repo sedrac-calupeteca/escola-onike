@@ -12,6 +12,7 @@ class Turma extends Model
 
     protected $fillable = [
         'id',
+        'chave',
         'curso_id',
         'ano_lectivo_id',
         'periodo',
@@ -24,7 +25,7 @@ class Turma extends Model
 
     protected $casts = [
         'sala' => 'string'
-    ]; 
+    ];
 
     public function curso(){
         return $this->belongsTo(Curso::class);
@@ -36,11 +37,11 @@ class Turma extends Model
 
     public function alunos(){
         return $this->hasMany(Aluno::class);
-    }    
+    }
 
     public function professors(){
         return $this->belongsToMany(Professor::class);
-    }    
+    }
 
 
 }

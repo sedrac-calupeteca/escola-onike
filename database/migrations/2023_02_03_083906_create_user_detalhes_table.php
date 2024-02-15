@@ -24,8 +24,8 @@ return new class extends Migration
             $table->string('contacto',150)->nullable();
             $table->string('email_opt',150)->nullable();
             $table->string('descricao')->nullable();;
-            $table->uuid('created_by');
-            $table->uuid('updated_by');     
+            $table->uuid('created_by')->nullable();
+            $table->uuid('updated_by')->nullable();
             $table->timestamps();
             $table->unique(['user_id']);
         });
