@@ -227,6 +227,7 @@
                                     <hr />
                                     @include('components.form.user', [
                                         'hidden_password' => true,
+                                        'hidden_btn' => true,
                                         'user' => $auth,
                                     ])
                                     <div class="text-center mt-4">
